@@ -27,8 +27,15 @@ export function ScoreRing({
       : "stroke-red-400"
 
   return (
-    <div className={cn("flex flex-col items-center gap-1", className)}>
-      <svg width={size} height={size} className="-rotate-90">
+    <div
+      className={cn("relative inline-flex items-center justify-center", className)}
+      style={{ width: size, height: size }}
+    >
+      <svg
+        width={size}
+        height={size}
+        className="absolute inset-0 -rotate-90"
+      >
         <circle
           cx={size / 2}
           cy={size / 2}
@@ -49,9 +56,15 @@ export function ScoreRing({
           className={cn("transition-all duration-700", color)}
         />
       </svg>
-      <div className="-mt-[calc(50%+12px)] flex flex-col items-center justify-center" style={{ height: size }}>
-        <span className="text-xl font-bold font-mono text-foreground">{score.toFixed(0)}</span>
-        {label && <span className="text-[10px] text-muted-foreground uppercase tracking-wider">{label}</span>}
+      <div className="relative flex flex-col items-center justify-center">
+        <span className="font-bold font-mono text-foreground leading-none" style={{ fontSize: size * 0.22 }}>
+          {score.toFixed(0)}
+        </span>
+        {label && (
+          <span className="text-muted-foreground uppercase tracking-wider leading-none mt-0.5" style={{ fontSize: size * 0.1 }}>
+            {label}
+          </span>
+        )}
       </div>
     </div>
   )
