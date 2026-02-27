@@ -60,7 +60,8 @@ export default function CreateJobPage({
 }: {
   params: { recruiterId: string }
 }) {
-  const { recruiterId } = params  const router = useRouter()
+  const { recruiterId } = params
+  const router = useRouter()
   const [loading, setLoading] = useState(false)
   const [error, setError] = useState("")
   const [title, setTitle] = useState("")
